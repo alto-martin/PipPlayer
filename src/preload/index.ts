@@ -1,8 +1,23 @@
 import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+import { domReady } from './utils'
+// import { appendLoading } from './loading'
+import { appendLoading, removeLoading } from './loading'
+
+console.log('preload loading...')
+
+// import { useLoading } from './loading'
+// const { appendLoading, removeLoading } = useLoading()
+
+// @ts-ignore (define in dts)
+// window.removeLoading = removeLoading()
+domReady().then(() => {
+  appendLoading()
+  console.log('dom ready')
+})
 
 // Custom APIs for renderer
-const api = {}
+const api = { removeLoading: removeLoading }
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise

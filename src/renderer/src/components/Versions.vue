@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 
+// @ts-ignore (define in dts)
 const versions = reactive({ ...window.electron.process.versions })
 </script>
 

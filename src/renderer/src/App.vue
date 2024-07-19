@@ -1,11 +1,20 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import Versions from './components/Versions.vue'
 
+// @ts-ignore (define in dts)
 const ipcHandle = () => window.electron.ipcRenderer.send('ping')
+onMounted(() => {
+  setTimeout(() => {
+    console.log('on mounted', window)
+    // @ts-ignore (define in dts)
+    window.api.removeLoading()
+  }, 3000)
+})
 </script>
 
 <template>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
+  <img alt="logo" class="logo" src="../../../resources/icon.png" />
   <div class="creator">Powered by electron-vite</div>
   <div class="text">
     Build an Electron app with
