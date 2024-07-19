@@ -9,7 +9,7 @@ onMounted(() => {
     console.log('on mounted', window)
     // @ts-ignore (define in dts)
     window.api.removeLoading()
-  }, 3000)
+  }, 1000)
 })
 </script>
 
